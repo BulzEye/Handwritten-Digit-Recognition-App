@@ -1,10 +1,14 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Canvas.module.css";
 import { Button } from "react-bootstrap";
 
 const Canvas = (props) => {
     const canvasRef = useRef(null);
     const [prediction, setPrediction] = useState(null);
+
+    useEffect(() => {
+        clearCanvas();
+    })
 
     const handleDrag = (e) => {
         if(e.buttons === 1) {
@@ -44,16 +48,17 @@ const Canvas = (props) => {
         // a.click();
         // document.body.removeChild(a);
     }
+
     const clearCanvas = () => {
         const context = canvasRef.current.getContext("2d");
         context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         context.fillStyle = "white";
 		context.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     }
+
     return ( 
         <>
             <canvas ref={canvasRef} {...props} onMouseMove={handleDrag} className={styles.canvas}>
-
             </canvas>
             <div className="buttonSection">
                 <Button onClick={sendImage} variant="success">
