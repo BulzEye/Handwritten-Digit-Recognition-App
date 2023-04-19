@@ -9,7 +9,7 @@ function App() {
         <div className="App">
             <Header />
             <Container>
-                <Canvas />
+                <Canvas width={280} height={280}/>
             </Container>
         </div>
     );
