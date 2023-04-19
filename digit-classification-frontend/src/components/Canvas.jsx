@@ -8,7 +8,7 @@ const Canvas = (props) => {
 
     useEffect(() => {
         clearCanvas();
-    })
+    }, []);
 
     const handleDrag = (e) => {
         if(e.buttons === 1) {
